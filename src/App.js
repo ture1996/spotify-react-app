@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MainSpotify } from "./pages/MainSpotify";
+import { Layout } from "./layouts/Layout";
+import { PlayerSpotify } from "./pages/PlayerSpotify";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<MainSpotify />} />
+          <Route path="/:type/:id/:tracks?" element={<PlayerSpotify />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
